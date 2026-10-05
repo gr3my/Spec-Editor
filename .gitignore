@@ -1,0 +1,39 @@
+# Build outputs - rebuild via mod/build.ps1
+*.dll
+*.exe
+*.pdb
+*.lib
+*.exp
+*.obj
+mod/build/
+mod/build-rift/
+mod/rift/
+
+# Editor build output
+SpecEditorBuild/
+SpecBuild/
+RiftPublish/
+
+# Vendor tools - fetch separately, don't commit binaries
+luau/vendor/*.exe
+ThirdParty/
+
+# Runtime / local
+*.log
+sessions.json
+*.db
+*.sqlite
+game_shots/
+game_mcp_port.txt
+
+# IDE / OS
+.vs/
+bin/
+obj/
+.next/
+node_modules/
+publish/
+__pycache__/
+*.pyc
+Thumbs.db
+Desktop.ini

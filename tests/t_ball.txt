@@ -1,0 +1,28 @@
+log BOARD start
+enter
+wait 8
+scene open BallBattle
+wait 20
+gmapply BallBattle
+wait 20
+log SHOT lobby
+wait 10
+raw SE|XFORM|BP_JakeBall_C@0,2700,-28607|0,2700,-28607|0,90,0|1,1,1
+wait 8
+log SHOT rotated
+wait 6
+raw SE|XFORM|BP_JakeBall_C@0,2700,-28607|0,2700,-28607|0,0,0|2,2,2
+wait 10
+log SHOT scaled
+wait 6
+raw SE|XFORM|BP_JakeBall_C@0,2700,-28600|300,2700,-28600|0,0,0|2,2,2
+wait 10
+log SHOT moved
+wait 4
+raw SE|PRESS|start
+wait 16
+log SHOT playing
+wait 6
+scene close
+wait 4
+log BOARD end

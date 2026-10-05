@@ -1,0 +1,8 @@
+log C2 start
+enter
+wait 3
+dumpscripts dumped-gamescripts
+wait 3
+testquest cbq2
+wait 25
+log C2 done

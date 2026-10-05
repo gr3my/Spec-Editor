@@ -1,0 +1,75 @@
+log EXLEVEL TrapGauntlet start
+enter
+wait 3
+raw SE|GMNEW|TrapGauntlet|0,2500,-28625|2|4,4|Blue,Red
+wait 10
+raw SE|GMSET|GameMode1|start_mode|button
+raw SE|GMSET|GameMode1|round_time|90
+raw SE|GMSET|GameMode1|countdown|3
+raw SE|GMTEAM|GameMode1|1|-700,1200,-28625|90
+raw SE|SBADD|PrimitiveCubeBlue|-900.0,1200.0,-28475.0
+raw SE|SBADD|PrimitiveCubeBlue|-500.0,1200.0,-28475.0
+raw SE|SBADD|PrimitiveCubeBlue|-700.0,1200.0,-28305.0
+wait 4
+raw SE|XFORM|Prefab_BP_CubePrimitive_Blue_C@-900.000,1200.000,-28475.000|-900.0,1200.0,-28475.0|0,0,0|0.40,0.40,3.00
+raw SE|XFORM|Prefab_BP_CubePrimitive_Blue_C@-500.000,1200.000,-28475.000|-500.0,1200.0,-28475.0|0,0,0|0.40,0.40,3.00
+raw SE|XFORM|Prefab_BP_CubePrimitive_Blue_C@-700.000,1200.000,-28305.000|-700.0,1200.0,-28305.0|0,0,0|4.40,0.40,0.40
+raw SE|SBADD|aa_se_LE_BP_Text|-700.0,1200.0,-28235.0
+wait 3
+pickat LE_BP_Text_C -700 1200 -28235
+rotate 180
+wait 2
+raw SE|SBSET|LE_BP_Text_C@-700.000,1200.000,-28235.000|props/Text|text|{TrapGauntlet.team1.name} team
+raw SE|GMTEAM|GameMode1|2|700,1200,-28625|90
+raw SE|SBADD|PrimitiveCubeYellow|500.0,1200.0,-28475.0
+raw SE|SBADD|PrimitiveCubeYellow|900.0,1200.0,-28475.0
+raw SE|SBADD|PrimitiveCubeYellow|700.0,1200.0,-28305.0
+wait 4
+raw SE|XFORM|Prefab_BP_CubePrimitive_Yellow_C@500.000,1200.000,-28475.000|500.0,1200.0,-28475.0|0,0,0|0.40,0.40,3.00
+raw SE|XFORM|Prefab_BP_CubePrimitive_Yellow_C@900.000,1200.000,-28475.000|900.0,1200.0,-28475.0|0,0,0|0.40,0.40,3.00
+raw SE|XFORM|Prefab_BP_CubePrimitive_Yellow_C@700.000,1200.000,-28305.000|700.0,1200.0,-28305.0|0,0,0|4.40,0.40,0.40
+raw SE|SBADD|aa_se_LE_BP_Text|700.0,1200.0,-28235.0
+wait 3
+pickat LE_BP_Text_C 700 1200 -28235
+rotate 180
+wait 2
+raw SE|SBSET|LE_BP_Text_C@700.000,1200.000,-28235.000|props/Text|text|{TrapGauntlet.team2.name} team
+raw SE|SBADD|BasicButton|-600.0,1500.0,-28625.0
+raw SE|SBADD|BasicButton|-400.0,3900.0,-28625.0
+raw SE|SBADD|BasicButton|0.0,1500.0,-28625.0
+raw SE|SBADD|BasicButton|400.0,3900.0,-28625.0
+raw SE|SBADD|TrapTrapDoor|0.0,2100.0,-28625.0
+raw SE|SBADD|TrapFallingBlock|0.0,2700.0,-28325.0
+raw SE|SBADD|TrapFlipper|0.0,3300.0,-28625.0
+raw SE|SBADD|TrapSpinner|-1300.0,2700.0,-28625.0
+raw SE|SBADD|TrapLaser|1300.0,2700.0,-28625.0
+raw SE|SBADD|Timer|600.0,1500.0,-28625.0
+raw SE|SBADD|aa_se_LE_BP_Text|-1300.0,1500.0,-28375.0
+wait 10
+gmrole BP_BasicButton_C TrapGauntlet trap_button:5 0
+gmrole BP_BasicButton_C TrapGauntlet score:1 1
+gmrole BP_BasicButton_C TrapGauntlet start 2
+gmrole BP_BasicButton_C TrapGauntlet score:2 3
+gmrole BP_Trap_TrapDoor_C TrapGauntlet trap_fired 0
+gmrole BP_Trap_FallingBlock_C TrapGauntlet trap_fired 0
+gmrole BP_Trap_Flipper_C TrapGauntlet trap_fired 0
+gmrole BP_Trap_Spinner_C TrapGauntlet trap_round 0
+gmrole BP_Trap_Laser_C TrapGauntlet trap_pulse:3 0
+gmrole BP_Timer_C TrapGauntlet timer 0
+pickat LE_BP_Text_C -1300 1500 -28375
+rotate 180
+wait 2
+raw SE|SBSET|LE_BP_Text_C@-1300.000,1500.000,-28375.000|props/Text|text|{Warning}
+wait 6
+gmapply TrapGauntlet
+wait 10
+raw SE|GMCTL|GameMode1|start
+wait 8
+expectgm TrapGauntlet running
+raw SE|GMCTL|GameMode1|reset
+wait 4
+expectgm TrapGauntlet idle
+scene saveas TrapGauntlet
+wait 10
+expectlvfile TrapGauntlet 1
+log EXLEVEL TrapGauntlet done

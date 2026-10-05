@@ -1,0 +1,6 @@
+log DS start
+enter
+wait 3
+dumpscripts dumped-gamescripts
+wait 4
+log DS done

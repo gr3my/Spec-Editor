@@ -1,0 +1,7 @@
+# Template catalogue -- build the real one with tools/make_catalogue.py against an
+# FModel export of YOUR game (see tools/README.md). <category>|<class path>.
+# With no active entries the palette falls back to classes already loaded in memory.
+# Example rows (commented out):
+# Meshes|/Game/YourGame/Prefabs/Meshes/LE_SM_ExampleCube.LE_SM_ExampleCube_C
+# Props|/Game/YourGame/Prefabs/Props/LE_BP_ExampleSign.LE_BP_ExampleSign_C
+# Gameplay|/Game/YourGame/Prefabs/Gameplay/LE_BP_ExampleButton.LE_BP_ExampleButton_C

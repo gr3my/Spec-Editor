@@ -1,0 +1,13 @@
+# Icon memory: with the editor open (palette + Content Browser draw the game icons every frame), private
+# memory must not keep climbing. The first ~40 s after entering is the game settling, so the baseline is
+# taken after that; a leak would show as steady growth across the next 60 s.
+log T-MEM start
+enter
+wait 40
+mem base
+wait 30
+mem mid
+wait 30
+mem end
+expectmemgrowth 4
+log T-MEM done

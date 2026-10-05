@@ -1,0 +1,10 @@
+log LD start
+enter
+wait 3
+raw SE|LGMDESC|SampleQuest_Full
+raw SE|LGMDESC|SampleQuest_UGC_1
+raw SE|LGMDESC|FirstToTen
+pickat BP_DebugCube_C 300 -2600 -27000
+sbtree
+wait 4
+log LD done

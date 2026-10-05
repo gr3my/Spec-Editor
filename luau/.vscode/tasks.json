@@ -1,0 +1,36 @@
+{
+	// Game's own checks (tools/game-check.ps1): the game-only traps IntelliSense can't know about -- e.g. a
+	// typed local like `local Names: { [string]: boolean } = {...}` that crashed every player. Runs in the
+	// background when this folder opens (VS Code asks once: "Allow Automatic Tasks") and re-checks every save;
+	// findings appear in the Problems panel and are underlined in the file.
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Game: check scripts",
+			"type": "process",
+			"command": "powershell.exe",
+			"args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/game-check.ps1", "-Watch"],
+			"isBackground": true,
+			"runOptions": { "runOn": "folderOpen" },
+			"presentation": { "reveal": "never", "panel": "dedicated", "echo": false },
+			"problemMatcher": {
+				"owner": "game",
+				"source": "game",
+				"fileLocation": "absolute",
+				"pattern": {
+					"regexp": "^(.*\\.luau):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"severity": 4,
+					"message": 5
+				},
+				"background": {
+					"activeBegin": true,
+					"beginsPattern": "^game-check: checking",
+					"endsPattern": "^game-check: done"
+				}
+			}
+		}
+	]
+}
